@@ -62,7 +62,7 @@ function initSimulation() {
   
   // Timer for debug output
   let lastInertiaDebugTime = 0;
-  const INERTIA_DEBUG_INTERVAL = 10000; // 10 seconds in milliseconds
+  const INERTIA_DEBUG_INTERVAL = 1000; // 10 seconds in milliseconds
   
   let showDistanceInfo = false;
   let raycaster = new THREE.Raycaster();
@@ -735,10 +735,10 @@ function createDockingPort(geometry) {
     
     // DEBUG: Print inertia matrix every 10 seconds
     if (satBody && currentTime - lastInertiaDebugTime > INERTIA_DEBUG_INTERVAL) {
-      console.log("DEBUG: Inertia Matrix (10s interval):", {
-        x: satBody.inertia.x,
-        y: satBody.inertia.y,
-        z: satBody.inertia.z,
+      console.log("DEBUG: Velocity Matrix (10s interval):", {
+        x: satBody.velocity.x,
+        y: satBody.velocity.y,
+        z: satBody.velocity.z,
         mass: satBody.mass
       });
       lastInertiaDebugTime = currentTime;
@@ -964,3 +964,4 @@ function createDockingPort(geometry) {
 
   initializeDefaultSpacecraft();
 }
+
