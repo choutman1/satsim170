@@ -62,7 +62,7 @@ function initSimulation() {
   
   // Timer for debug output
   let lastInertiaDebugTime = 0;
-  const INERTIA_DEBUG_INTERVAL = 1000; // 10 seconds in milliseconds
+  const INERTIA_DEBUG_INTERVAL = 10000; // 10 seconds in milliseconds
   
   let showDistanceInfo = false;
   let raycaster = new THREE.Raycaster();
@@ -964,4 +964,5 @@ function createDockingPort(geometry) {
 
   initializeDefaultSpacecraft();
 }
+
 
