@@ -307,7 +307,7 @@ function updateDockingInfo(isDocked, dockingStatus) {
   }
   
   // Update docking metrics
-  uiElements.dockDistance.textContent = dockingStatus.distance.toFixed(3);
+  uiElements.dockDistance.textContent = dockingStatus.distance.toFixed(10);
   uiElements.angularDiff.textContent = dockingStatus.angleDiff.toFixed(2);
   uiElements.dockingSpeed.textContent = dockingStatus.speed.toFixed(3);
   uiElements.dockingAngularSpeed.textContent = dockingStatus.angularSpeed.toFixed(3);
@@ -406,4 +406,5 @@ export function updateUIText(elementId, text) {
     element.textContent = text;
   }
 }
+
 
