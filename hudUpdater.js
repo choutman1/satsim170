@@ -160,7 +160,7 @@ function updateUnifiedHUD(satBody, isPaused, cameraSystem, fineControlMode, isDo
   
   // Update attitude info
   if (uiElements.attitudeInfo) {
-    uiElements.attitudeInfo.textContent = `Roll: ${rpy.roll.toFixed(7)}° Pitch: ${rpy.pitch.toFixed(7)}° Yaw: ${rpy.yaw.toFixed(7)}°`;
+    uiElements.attitudeInfo.textContent = `Roll: ${rpy.roll.toFixed(7)} ° Pitch: ${rpy.pitch.toFixed(7)} ° Yaw: ${rpy.yaw.toFixed(7)} °`;
   }
   
   // Update status info
@@ -406,6 +406,7 @@ export function updateUIText(elementId, text) {
     element.textContent = text;
   }
 }
+
 
 
 
