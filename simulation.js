@@ -924,7 +924,8 @@ function createDockingPort(geometry) {
 
   // Export current position and orientation to JSON file
   const copyButton = document.getElementById('export-position-button');
-  const textToCopyElement = document.getElementById('position-info');
+  const positionElement = document.getElementById('position-info');
+  const velocityElement = document.getElementById('velocity-info');
   window.addEventListener('exportPosition', async  () => {
     if (!satBody) {
       console.error('Spacecraft body not available for export');
@@ -948,7 +949,7 @@ function createDockingPort(geometry) {
       dockingAngleThreshold: DOCKING_ANGLE_THRESHOLD
     };
     try {
-        await navigator.clipboard.writeText(textToCopyElement.textContent);
+        await navigator.clipboard.writeText(positionElement.textContent+velocityElement.textContent);
         console.log('Text copied to clipboard successfully!');
         // Optional: Provide visual feedback to the user
         copyButton.textContent = 'Copied!';
@@ -1002,6 +1003,7 @@ function createDockingPort(geometry) {
   // });
   initializeDefaultSpacecraft();
 }
+
 
 
 
