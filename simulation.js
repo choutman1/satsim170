@@ -30,23 +30,7 @@ import { LampManager } from './lampManager.js';
 window.addEventListener('startSimulation', () => {
   initSimulation();
 });
-let frameCount = 0;
-let startTime = performance.now();
-let fps = 0;
 
-function estimateFPS(currentTime) {
-  frameCount++;
-  const elapsedTime = currentTime - startTime;
-
-  if (elapsedTime >= 1000) { // Check if one second has passed
-    fps = frameCount;
-    
-    // Reset counters for the next second
-    frameCount = 0;
-    startTime = currentTime; 
-  }
-}
-requestAnimationFrame(estimateFPS)
 function initSimulation() {
   const DEFAULT_MODEL_PATH = 'navion.stl';
   const CONVEX_HULLS_PATH = 'convex-hulls.json';
@@ -851,7 +835,7 @@ function createDockingPort(geometry) {
         }
       });
       
-      world.step(1/fps);
+      world.step(1/170);
     }
 
     if (getSpacecraftBody()) {
@@ -980,6 +964,7 @@ function createDockingPort(geometry) {
 
   initializeDefaultSpacecraft();
 }
+
 
 
 
