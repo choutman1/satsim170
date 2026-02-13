@@ -923,7 +923,9 @@ function createDockingPort(geometry) {
   });
 
   // Export current position and orientation to JSON file
-  window.addEventListener('exportPosition', () => {
+  const copyButton = document.getElementById('export-position-button');
+  const textToCopyElement = document.getElementById('position-info');
+  window.addEventListener('exportPosition', async  () => {
     if (!satBody) {
       console.error('Spacecraft body not available for export');
       alert('Spacecraft not loaded yet');
@@ -945,19 +947,17 @@ function createDockingPort(geometry) {
       dockingBoxSize: DOCKING_BOX_SIZE,
       dockingAngleThreshold: DOCKING_ANGLE_THRESHOLD
     };
-
-    // Create a blob and download the file
-    const dataStr = JSON.stringify(positionData, null, 2);
-    const blob = new Blob([dataStr], { type: 'application/json' });
-    const array = new blob.Bytes()
-    const base6 = array.toBase64({ alphabet: "base64url" });
-    const url = data:application/json,;base64,base6;
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'spacecraft_position.json';
-    document.body.appendChild(a);
-    
+    try {
+        await navigator.clipboard.writeText(textToCopyElement.textContent);
+        console.log('Text copied to clipboard successfully!');
+        // Optional: Provide visual feedback to the user
+        copyButton.textContent = 'Copied!';
+        setTimeout(() => {
+            copyButton.textContent = 'Export Current Position & Orientation';
+        }, 1500);
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+    }
     console.log('Exported position/orientation:', positionData);
   });
   
@@ -1002,6 +1002,7 @@ function createDockingPort(geometry) {
   // });
   initializeDefaultSpacecraft();
 }
+
 
 
 
