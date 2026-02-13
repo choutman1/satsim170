@@ -834,8 +834,24 @@ function createDockingPort(geometry) {
           });
         }
       });
+      let frameCount = 0;
+      let startTime = performance.now();
+      let fps = 0;
       
-      world.step(1/60);
+      function estimateFPS(currentTime) {
+        frameCount++;
+        const elapsedTime = currentTime - startTime;
+      
+        if (elapsedTime >= 1000) { // Check if one second has passed
+          fps = frameCount;
+          
+          // Reset counters for the next second
+          frameCount = 0;
+          startTime = currentTime; 
+        }
+      }
+      requestAnimationFrame(estimateFPS)
+      world.step(1/fps);
     }
 
     if (getSpacecraftBody()) {
@@ -964,5 +980,6 @@ function createDockingPort(geometry) {
 
   initializeDefaultSpacecraft();
 }
+
 
 
