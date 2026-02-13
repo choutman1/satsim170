@@ -948,7 +948,7 @@ function createDockingPort(geometry) {
 
     // Create a blob and download the file
     const dataStr = JSON.stringify(positionData, null, 2);
-    const file = new Blob([dataStr],"spacecraft_position.json", { type: 'application/json' });
+    const file = new File([dataStr],"spacecraft_position.json", { type: 'application/json' });
     const url = URL.createObjectURL(file);
     
     const a = document.createElement('a');
@@ -1000,6 +1000,7 @@ function createDockingPort(geometry) {
   // });
   initializeDefaultSpacecraft();
 }
+
 
 
 
